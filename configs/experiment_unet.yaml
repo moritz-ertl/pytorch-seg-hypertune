@@ -1,8 +1,8 @@
 seed: 17
 
 data:
-  images_dir: 'C:\Users\Moritz Ertl\OneDrive - TUM\Studium\Bachelor\Bachelorarbeit\Dataset\images'
-  masks_dir: 'C:\Users\Moritz Ertl\OneDrive - TUM\Studium\Bachelor\Bachelorarbeit\Dataset\masks'
+  images_dir: ./images
+  masks_dir: ./masks
   limit: 50
   split:
     val: 0.2
