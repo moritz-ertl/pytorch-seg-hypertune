@@ -1,0 +1,75 @@
+seed: 17
+
+data:
+  images_dir: 'C:\Users\Moritz Ertl\OneDrive - TUM\Studium\Bachelor\Bachelorarbeit\Dataset\images'
+  masks_dir: 'C:\Users\Moritz Ertl\OneDrive - TUM\Studium\Bachelor\Bachelorarbeit\Dataset\masks'
+  limit: 50
+  split:
+    val: 0.2
+    test: 0.1
+
+dataloader:
+  batch_size: 16
+  num_workers: 0
+  pin_memory: true
+  persistent_workers: false
+
+aug:
+  tau: 8.0
+
+model:
+  arch: Unet
+  encoder_name: resnet34
+  classes: 3
+  loss: DiceLoss
+  lr: 2.0e-4
+  weight_decay: 1.0e-6
+
+trainer:
+  max_epochs: 50
+  accelerator: auto
+  devices: 1
+  log_every_n_steps: 20
+  enable_checkpointing: true
+  num_sanity_val_steps: 0
+
+optuna:
+  n_trials: 25
+  direction: maximize
+  sampler: tpe
+  pruner: median
+  search_space:
+    model.arch:
+      type: categorical
+      choices: [Unet, FPN, DeepLabV3, DeepLabV3Plus, PSPNet, Linknet]
+    model.encoder_name:
+      type: categorical
+      choices: [resnet18, resnet34, resnet50, timm-efficientnet-b0, timm-efficientnet-b3]
+    model.loss:
+      type: categorical
+      choices: [DiceLoss, JaccardLoss, FocalLoss]
+    model.lr:
+      type: float
+      low: 1e-5
+      high: 1e-3
+      log: true
+    model.weight_decay:
+      type: float
+      low: 1e-6
+      high: 1e-3
+      log: true
+    dataloader.batch_size:
+      type: int
+      low: 8
+      high: 32
+      step: 8
+    aug.tau:
+      type: float
+      low: 6.0
+      high: 20.0
+      step: 2.0
+    trainer.max_epochs:
+      type: int
+      low: 10
+      high: 50
+      step: 10

@@ -1,0 +1,10 @@
+torch
+torchvision
+lightning>=2.2
+segmentation-models-pytorch
+optuna>=3
+albumentations
+opencv-python
+torchmetrics
+pyyaml
+scikit-learn
