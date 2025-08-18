@@ -41,14 +41,21 @@ This repository provides a flexible framework for **hyperparameter tuning of sem
 ## ⚙️ Installation
 ```bash
 # Clone repo
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/moritz-ertl/pytorch-seg-hypertune.git
+cd pytorch-seg-hypertune
 
-# Create environment
+# Option A: Create and activate virtual environment using venv
+python -m venv .venv
+
+# Activate
+source .venv/bin/activate        # On Linux/Mac
+.venv\Scripts\activate           # On Windows
+
+# Option B: Create and activate virtual environment using conda
 conda create -n segm python=3.10
 conda activate segm
 
-# Install dependencies
+# Install dependencies (works for both venv or conda)
 pip install -r requirements.txt
 ```
 
@@ -75,7 +82,7 @@ python src/tune.py --config configs/default.yaml --trials 50
 **Configurable parameters include**:
 - Encoder architecture (`resnet34`, `efficientnet-b0`, …)  
 - Decoder type (`Unet`, `FPN`, `DeepLabV3+`)  
-- Loss functions (`DiceLoss`, `CrossEntropy`, `Combo`)  
+- Loss functions (`DiceLoss`, `CrossEntropy`, `FocalLoss`)  
 - Learning rate, optimizer, scheduler  
 - Augmentation strategy (static vs. adaptive curriculum)  
 
@@ -94,14 +101,13 @@ This repo implements an **epoch-dependent curriculum augmentation**, following:
 ---
 
 ## 📊 Example Workflow
-1. Define dataset paths in `configs/default.yaml`  
-2. Choose encoder/decoder and loss function  
-3. Run `train.py` for a baseline model  
-4. Run `tune.py` to explore hyperparameters  
-5. Monitor results via Optuna dashboard:
+1. Define dataset paths and hyperparameter search space in `configs/default.yaml`   
+2. Run `tune.py` to explore hyperparameters  
+3. Monitor results via Optuna dashboard:
    ```bash
    optuna-dashboard sqlite:///optuna.db
    ```
+4. Run `train.py` with optimized hyperparameters 
 
 ---
 
