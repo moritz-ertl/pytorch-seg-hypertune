@@ -16,24 +16,24 @@ This repository provides a flexible framework for **hyperparameter tuning of sem
 
 ## 📂 Repository Structure
 ```
-├── configs/                   # Example experiment configurations
-│   └── default.yaml           # Default config for training/tuning
-├── src/                       # Source code
-│   ├── aug/                   # Augmentation logic
-│   │   └── adaptive.py        # Implementation of adaptive augmentation (Hou et al.)
-│   ├── data/                  # Dataset & DataModule definitions
-│   │   ├── datamodule.py      # Lightning DataModule wrapper
-│   │   └── dataset.py         # Custom Dataset class for segmentation
-│   ├── models/                # Model-related code
-│   │   ├── factory.py         # Builds models from segmentation_models.pytorch
-│   │   └── lightning_module.py# PyTorch Lightning module (training step, metrics, etc.)
-│   ├── utils/                 # Utility scripts
-│   │   └── search_space.py    # Defines Optuna search space
-│   ├── train.py               # Standard training entrypoint
-│   └── tune.py                # Optuna-based hyperparameter search
-├── .gitignore                 # Git ignore rules
-├── LICENSE                    # License file (MIT)
-└── README.md                  # Project documentation
+├── configs/
+│   └── default.yaml
+├── src/
+│   ├── aug/
+│   │   └── adaptive.py
+│   ├── data/
+│   │   ├── datamodule.py
+│   │   └── dataset.py
+│   ├── models/
+│   │   ├── factory.py
+│   │   └── lightning_module.py
+│   ├── utils/
+│   │   └── search_space.py
+│   ├── train.py
+│   └── tune.py
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
 ---
