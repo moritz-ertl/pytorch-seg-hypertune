@@ -89,5 +89,5 @@ class MulticlassSeg(LightningModule):
 
     def configure_optimizers(self):
         opt = Adam(self.parameters(), lr=self.hparams.lr, weight_decay=self.hparams.weight_decay)
-        sch = torch.optim.lr_scheduler.ReduceLROnPlateau(opt, mode="max", factor=0.1, patience=5, min_lr=1e-6, verbose=True)
+        sch = torch.optim.lr_scheduler.ReduceLROnPlateau(opt, mode="max", factor=0.1, patience=5, min_lr=1e-6)
         return {"optimizer": opt, "lr_scheduler": {"scheduler": sch, "monitor": "valid_combined_metric"}}

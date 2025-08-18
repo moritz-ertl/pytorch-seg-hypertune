@@ -55,7 +55,7 @@ def main(config_path: str, trials: int | None):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--config", default="configs/experiment_unet.yaml")
+    ap.add_argument("--config", default="configs/default.yaml")
     ap.add_argument("--trials", type=int, default=None)
     args = ap.parse_args()
     main(args.config, args.trials)

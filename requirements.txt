@@ -8,3 +8,5 @@ opencv-python
 torchmetrics
 pyyaml
 scikit-learn
+optuna-integration[pytorch_lightning]
+tensorboard
