@@ -41,7 +41,7 @@ This repository provides a flexible framework for **hyperparameter tuning of sem
 ## ⚙️ Installation
 ```bash
 # Clone repo
-git clone https://github.com/moritz-ertl/pytorch-seg-hypertune.git
+git clone https://github.com/ertlmoritz/pytorch-seg-hypertune.git
 cd pytorch-seg-hypertune
 
 # Option A: Create and activate virtual environment using venv
